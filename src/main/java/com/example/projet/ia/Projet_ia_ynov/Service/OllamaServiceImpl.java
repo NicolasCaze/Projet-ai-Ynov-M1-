@@ -18,7 +18,7 @@ public class OllamaServiceImpl implements OllamaService{
                 new Prompt(
                         message,
                         OllamaOptions.create()
-                                .withModel("llama3")
+                                .withModel("llama3.2:1b")
                                 .withTemperature(0.4)
                 ));
         return response.getResult().getOutput().getContent();
