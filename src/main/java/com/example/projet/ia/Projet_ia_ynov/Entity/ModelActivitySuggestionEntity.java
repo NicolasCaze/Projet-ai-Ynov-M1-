@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.w3c.dom.Text;
 
 import javax.swing.*;
 import java.util.Date;
@@ -17,7 +18,7 @@ public class ModelActivitySuggestionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private long id;
-
+    @Lob
     private String suggested_activites;
     private Date generated_at;
 
