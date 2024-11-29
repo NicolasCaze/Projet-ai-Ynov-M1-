@@ -1,5 +1,8 @@
 package com.example.projet.ia.Projet_ia_ynov.Controller;
 
+
+import com.example.projet.ia.Projet_ia_ynov.Dto.ActivityRequestDTO;
+import org.springframework.web.bind.annotation.*;
 import com.example.projet.ia.Projet_ia_ynov.Service.FileReadingService;
 import com.example.projet.ia.Projet_ia_ynov.Service.OllamaService;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
+
 
 @RestController
 @RequiredArgsConstructor
@@ -56,5 +60,12 @@ public class OllamaController {
                 .collect(Collectors.joining(""));
 
         return message;
+    }
+    @PostMapping("/activite")
+    public String reponseActivite(@RequestBody ActivityRequestDTO activityRequestDTO){
+        return ollamaService.generateResponse(activityRequestDTO.nb_people(),
+                activityRequestDTO.city(),
+                activityRequestDTO.activity_location(),
+                activityRequestDTO.time_of_day());
     }
 }
