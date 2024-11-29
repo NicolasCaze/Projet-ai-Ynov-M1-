@@ -3,6 +3,7 @@ package com.example.projet.ia.Projet_ia_ynov.Entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;

@@ -18,7 +18,7 @@ public class ModelActivityRequestEntity {
     private long id;
 
    private int nb_people;
-   private String ville;
+   private String city;
    private String activity_location;
    private String time_of_day;
    private Date request_date;
