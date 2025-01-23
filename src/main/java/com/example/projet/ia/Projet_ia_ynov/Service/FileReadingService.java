@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
+//Class Java permettant la lecture du fichier prompt
+
 @Service
 public class FileReadingService {
 

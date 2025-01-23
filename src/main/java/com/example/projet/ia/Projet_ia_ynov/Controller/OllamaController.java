@@ -29,7 +29,11 @@ public class OllamaController {
                 activityRequestDTO.nb_people(),
                 activityRequestDTO.activity_location(),
                 activityRequestDTO.city(),
-                activityRequestDTO.time_of_day());
+                activityRequestDTO.time_of_day(),
+                activityRequestDTO.hasChildren(),
+                activityRequestDTO.isWeekend(),
+                activityRequestDTO.isFree()
+        );
     }
 
     @PostMapping("/activite")
