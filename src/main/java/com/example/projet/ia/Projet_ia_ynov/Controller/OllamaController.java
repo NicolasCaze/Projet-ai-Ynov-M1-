@@ -22,8 +22,7 @@ public class OllamaController {
     private final OllamaService ollamaService;
 
     @PostMapping("/ollama")
-    public String ollama(@RequestBody ActivityRequestDTO activityRequestDTO)
-                          {
+    public String ollama(@RequestBody ActivityRequestDTO activityRequestDTO) {
 
         return ollamaService.generateOllama(
                 activityRequestDTO.nb_people(),
@@ -35,23 +34,5 @@ public class OllamaController {
                 activityRequestDTO.isFree()
         );
     }
-
-    @PostMapping("/activite")
-    public String reponseActivite(@RequestBody ActivityRequestDTO activityRequestDTO) {
-        // Validation des champs reçus
-        if (activityRequestDTO.nb_people() <= 0 || activityRequestDTO.city() == null) {
-            throw new IllegalArgumentException("Les paramètres fournis sont invalides");
-        }
-
-        // Appel du service pour générer et sauvegarder la réponse
-        return ollamaService.generateResponse(
-                activityRequestDTO.nb_people(),
-                activityRequestDTO.city(),
-                activityRequestDTO.activity_location(),
-                activityRequestDTO.time_of_day()
-        );
-    }
-
-
 
 }
