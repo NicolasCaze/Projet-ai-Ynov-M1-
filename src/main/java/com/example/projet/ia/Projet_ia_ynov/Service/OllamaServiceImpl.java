@@ -27,7 +27,7 @@ public class OllamaServiceImpl implements OllamaService {
     private final ChatModel chatModel;
     private final ModelActivityRequestRepository modelActivityRequestRepository;
     private final ModelActivitySuggestionRepository modelActivitySuggestionRepository;
-    private final ReadingTableService readingTableService; // Vérifie l'orthographe cohérente ici
+    private final ReadingTableService readingTableService;
 
     @Override
     public String generateOllama(
@@ -64,7 +64,11 @@ public class OllamaServiceImpl implements OllamaService {
                 isFree ? "oui" : "non"
         );
 
-        // Combiner les détails utilisateur avec le prompt
+        String priceFilterInstruction = isFree
+                ? "Je veux uniquement des activités gratuites."
+                : "Je veux uniquement des activités payantes.";
+        userDetails += System.lineSeparator() + priceFilterInstruction;
+
         String fullPrompt = userDetails + System.lineSeparator() + prompt;
 
         // Préparer les messages pour l'IA
@@ -87,8 +91,8 @@ public class OllamaServiceImpl implements OllamaService {
         requestEntity.setTime_of_day(time_of_day);
         requestEntity.setRequest_date(new Date());
         requestEntity.setHasChildren(hasChildren);
-        requestEntity.setWeekend(isWeekend); // Correction ici
-        requestEntity.setFree(isFree);       // Correction ici
+        requestEntity.setWeekend(isWeekend);
+        requestEntity.setFree(isFree);
         modelActivityRequestRepository.save(requestEntity);
 
         // Enregistrer la suggestion générée dans la base de données
@@ -103,7 +107,10 @@ public class OllamaServiceImpl implements OllamaService {
 
     @Override
     public String generateResponse(int nb_people, String city, String activity_location, String time_of_day) {
-        // Implémentation temporaire
-        return "Méthode generateResponse non encore implémentée.";
+        // Implémentation simple de generateResponse
+        return String.format(
+                "Nombre de personnes : %d, Ville : %s, Activité : %s, Moment de la journée : %s",
+                nb_people, city, activity_location, time_of_day
+        );
     }
 }
