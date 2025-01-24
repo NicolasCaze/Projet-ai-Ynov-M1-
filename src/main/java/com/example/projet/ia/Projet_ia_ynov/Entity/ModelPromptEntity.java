@@ -22,5 +22,6 @@ public class ModelPromptEntity {
 
     @Column(columnDefinition = "TEXT")
     private String prompt;
-    private Date update_at;
+    @Column(name = "update_at")
+    private Date updateAt;
 }
