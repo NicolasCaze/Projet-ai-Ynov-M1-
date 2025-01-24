@@ -22,6 +22,7 @@ Avant de commencer, assurez-vous d'avoir les outils suivants installés sur votr
    git clone https://github.com/aref400/projetia-back.git
    cd projetia-back
 
+Pensez à modifier dans src/main/ressources/application.properties de mettre vos identifiants de base de donnée.
 
 On vous conseille de télecharger les dépendances du projet :
 
