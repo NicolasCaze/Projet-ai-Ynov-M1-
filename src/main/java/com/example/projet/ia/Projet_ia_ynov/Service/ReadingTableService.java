@@ -14,7 +14,7 @@ public class ReadingTableService {
     public String getLatestPrompt() {
         // Récupérer le prompt le plus récent (vous pouvez affiner selon vos besoins)
         return modelPromptRepository.findAll().stream()
-                .max((p1, p2) -> p1.getUpdate_at().compareTo(p2.getUpdate_at()))
+                .max((p1, p2) -> p1.getUpdateAt().compareTo(p2.getUpdateAt()))
                 .map(ModelPromptEntity::getPrompt)
                 .orElse("Tu es une intelligence artificielle intégrée dans une application web conçue pour aider des personnes ou des groupes d'amis à trouver des activités adaptées à leurs besoins. Tes réponses doivent être limitées à 200 caractères.\n" +
                         "\n" +
